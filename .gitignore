@@ -134,3 +134,9 @@ dmypy.json
 # Pdf files and ris files
 *.pdf
 *.ris
+
+# test files
+check.ipynb
+check[0-9]*.ipynb
+test.py
+test[0-9].py
