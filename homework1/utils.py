@@ -1,17 +1,20 @@
 import requests
-from homework1.HtmlPraser import get_url
+from HtmlPraser import get_url
 import shutil
-from homework1.RisOperation import generate_name_from_ris
+from RisOperation import generate_name_from_ris
 import os 
+import re
 
 class web_file:
     def __init__(self, url=None, name="temporary", postfix = None, directory = None):
         self.url = url
         self.postfix = postfix
+        self.name = name
         if not directory:
-            self.directory = directory
-        else:
             self.directory = os.getcwd()
+        else:
+            self.directory = directory
+            
 
 
     def download(self, link = None , path = None ):
@@ -35,9 +38,12 @@ class web_file:
 
     def path(self):
         if not self.directory :
-            path = self.directory + self.name + self.postfix
-        else:
             path = self.name + self.postfix
+        else:
+            if re.match(r".*\\$", self.directory):
+                path = self.directory + self.name + self.postfix
+            else:
+                path = self.directory + "\\" + self.name + self.postfix
         return path
 
         
@@ -95,14 +101,14 @@ class paper():
         self.ris = ris(directory= self.ris_dir)
 
     def download(self):
-        self.pdf.url_get(web_url)
+        self.pdf.url_get(self.url)
         self.pdf.download()
 
-        self.ris.url_get(web_url)
+        self.ris.url_get(self.url)
         self.ris.download()
 
         # generate name from .ris file and rename both pdf and ris files
-        name = generate_name_from_ris(ris.path())
+        name = generate_name_from_ris(self.ris.path())
         self.pdf.rename(name)
         self.ris.rename(name)
         
