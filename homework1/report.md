@@ -14,18 +14,27 @@
 
 ## 使用方法
 
-```python
-# main.py
-from utils import paper # 导入papar class
+1. 直接运行主程序代码
 
-web_url = "https://www.nature.com/articles/s41586-021-03359-9" #指定文献的网址
+   ```python
+   # main.py
+   from utils import paper # 导入papar class
+   
+   web_url = "https://www.nature.com/articles/s41586-021-03359-9" #指定文献的网址
+   
+   pdf_directory = r"G:\\Test_Download_paper\\PDF" # 指定pdf存放的目录
+   ris_directory = r"G:\\Test_Download_paper\\RIS" # 指定ris存放的目录
+   
+   paper1 = paper(web_url, pdf_directory= pdf_directory, ris_directory= ris_directory) 
+   paper1.download() 
+   ```
 
-pdf_directory = r"G:\\Test_Download_paper\\PDF" # 指定pdf存放的目录
-ris_directory = r"G:\\Test_Download_paper\\RIS" # 指定ris存放的目录
+   
 
-paper1 = paper(web_url, pdf_directory= pdf_directory, ris_directory= ris_directory) 
-paper1.download() 
-```
+2. 使用GUI界面
+   运行app_gui.py
+
+
 
 ## 代码结构
 
@@ -199,9 +208,9 @@ generate_name_from_ris(ris_path)
 
 ## 下一步
 
-因为时间比较紧所以代码中暂时没有写图形界面，在关键节点上面我们没有进行一些错误的检测与处理
+因为时间比较紧所以代码中图形界面有部分没有完善好，在关键节点上面我们没有进行一些错误的检测与处理
 
-- 添加图形界面
+- 完善图形界面
 - 添加错误处理
 
 

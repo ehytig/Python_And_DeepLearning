@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests
 from HtmlPraser import get_url
 import shutil
