@@ -6,4 +6,4 @@ pdf_directory = r"G:\\Test_Download_paper\\PDF"
 ris_directory = r"G:\\Test_Download_paper\\RIS"
 
 paper1 = paper(web_url, pdf_directory= pdf_directory, ris_directory= ris_directory)
-paper1.download()
+paper1.download() 
