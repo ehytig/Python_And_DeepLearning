@@ -27,6 +27,20 @@ config文件采用detecron2内置的COCO-InstanceSegmentation/mask_rcnn_R_50_FPN
 
 Model采用本仓库中的model_final_f10217.pkl
 
+### 训练参数设置
+
+参数设置在detectron2中内置的COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml基础上进行修改，主要修改如下
+
+```python
+cfg.DATALOADER.NUM_WORKERS = 2 # 读取数据的进程个数
+cfg.SOLVER.IMS_PER_BATCH = 2 # 一次训练所抓取的数据样本数量
+cfg.SOLVER.BASE_LR = 0.00025 # 初始的学习率
+cfg.SOLVER.MAX_ITER = 1000 # 最多训练次数
+cfg.SOLVER.STEPS = [] # 不进行学习率改变
+cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128 #每一张照片拿去训练的anchor的数量
+cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1 # 类别数目，使用数据集balloon只有一个类别
+```
+
 ### 文件说明
 
 ###### Dockerfile
@@ -45,5 +59,5 @@ Model采用本仓库中的model_final_f10217.pkl
 
 配置环境时可能用到的命令
 
-
+### 
 
